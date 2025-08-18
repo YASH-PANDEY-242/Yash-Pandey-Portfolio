@@ -15,7 +15,7 @@ const Navigation = ({ socialLinks, onDownloadCV }: NavigationProps) => {
     <nav className="fixed top-0 left-0 right-0 z-30 p-6">
       <div className="flex justify-between items-center">
         {/* Logo/Name */}
-        <div className="text-2xl font-luxury font-bold text-white bg-white/10 backdrop-blur px-6 py-2 rounded-xl">
+        <div className="portfolio-name text-white bg-white/10 backdrop-blur px-6 py-2 rounded-xl">
           YASH PANDEY
         </div>
 

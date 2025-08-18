@@ -46,66 +46,53 @@ const ProfessionalSection = () => {
     <div className="max-w-6xl mx-auto">
       <div className="portfolio-glass rounded-3xl p-12 backdrop-blur-xl">
         <div className="text-center mb-12">
-          <h1 className="portfolio-heading mb-6">Professional Expertise & Projects</h1>
-          <p className="portfolio-text text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Passionate Software Engineer with specialized expertise in Artificial Intelligence and Machine Learning. 
-            Currently pursuing B-Tech in AI with hands-on experience in developing innovative solutions for real-world problems.
-            Proficient in multiple programming paradigms with a focus on cutting-edge technologies and deep learning applications.
+          <h1 className="portfolio-name mb-4">Professional Career</h1>
+          <p className="portfolio-text text-muted-foreground max-w-3xl mx-auto">
+            Dedicated Software Engineer specializing in Artificial Intelligence and Machine Learning. 
+            Currently pursuing B-Tech degree with strong foundation in programming and deep learning technologies.
           </p>
         </div>
 
-        {/* Core Competencies */}
+        {/* Education Section */}
         <div className="mb-12">
-          <h2 className="portfolio-subheading mb-6 text-accent">Core Competencies & Technologies</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="portfolio-card rounded-2xl p-6">
-              <h3 className="portfolio-text font-bold mb-3 text-primary">Machine Learning</h3>
-              <p className="text-muted-foreground">Deep Learning, Neural Networks, Computer Vision, CNNs, Image Processing</p>
-            </div>
-            <div className="portfolio-card rounded-2xl p-6">
-              <h3 className="portfolio-text font-bold mb-3 text-primary">Software Development</h3>
-              <p className="text-muted-foreground">Algorithm Design, Data Structures, Object-Oriented Programming, Problem Solving</p>
-            </div>
-            <div className="portfolio-card rounded-2xl p-6">
-              <h3 className="portfolio-text font-bold mb-3 text-primary">Database Management</h3>
-              <p className="text-muted-foreground">SQL Optimization, Database Design, Data Analysis, Query Performance</p>
-            </div>
+          <h2 className="text-2xl font-bold mb-6 text-accent">Education</h2>
+          <div className="portfolio-card rounded-2xl p-6">
+            <h3 className="portfolio-text font-bold mb-2">Bachelor in Technology (Artificial Intelligence)</h3>
+            <p className="portfolio-text text-muted-foreground mb-2">Sacred Heart Academy (CBSE), Nagpur</p>
+            <p className="text-sm text-muted-foreground">November 2022 — Present</p>
+            <p className="portfolio-text mt-3">Currently in 3rd year, expected graduation in 2026</p>
           </div>
         </div>
 
         {/* Skills Section */}
         <div className="mb-12">
-          <h2 className="portfolio-subheading mb-6 text-accent">Programming Proficiency</h2>
-          <div className="max-w-2xl mx-auto">
-            <div className="space-y-4">
-              {skills.map((skill, index) => (
-                <div key={index} className="portfolio-card rounded-xl p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <skill.icon className="h-5 w-5 text-primary" />
-                      <span className="portfolio-text font-semibold text-sm">{skill.name}</span>
-                    </div>
-                    <span className="text-sm font-medium text-muted-foreground">
-                      {skill.percentage}%
-                    </span>
-                  </div>
-                  <div className="skill-bar mb-1">
-                    <div
-                      className="skill-fill"
-                      style={{
-                        width: `${animatedSkills[skill.name] || 0}%`,
-                      }}
-                    />
-                  </div>
+          <h2 className="text-2xl font-bold mb-6 text-accent">Programming Skills</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skills.map((skill, index) => (
+              <div key={index} className="portfolio-card rounded-2xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <skill.icon className="h-6 w-6 text-primary" />
+                  <span className="portfolio-text font-semibold">{skill.name}</span>
                 </div>
-              ))}
-            </div>
+                <div className="skill-bar mb-2">
+                  <div
+                    className="skill-fill"
+                    style={{
+                      width: `${animatedSkills[skill.name] || 0}%`,
+                    }}
+                  />
+                </div>
+                <span className="text-sm font-medium text-muted-foreground">
+                  {skill.percentage}%
+                </span>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Projects Section */}
         <div>
-          <h2 className="portfolio-subheading mb-6 text-accent">Featured Projects & Achievements</h2>
+          <h2 className="text-2xl font-bold mb-6 text-accent">Featured Projects</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <div key={index} className="portfolio-card rounded-2xl p-6 hover:scale-105 transition-transform duration-300">

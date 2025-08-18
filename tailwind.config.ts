@@ -65,8 +65,6 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				luxury: ['Playfair Display', 'serif'],
-				elegant: ['Cormorant Garamond', 'serif'],
 			},
 			backdropBlur: {
 				xs: '2px',
