@@ -21,7 +21,7 @@ const PersonalSection = () => {
   ];
 
   const hobbies = [
-    { name: "Chromancy", icon: Camera },
+    { name: "Chiromancy", icon: Camera },
     { name: "Video Editing", icon: Edit },
     { name: "Gaming", icon: GamepadIcon },
   ];
@@ -36,16 +36,27 @@ const PersonalSection = () => {
     <div className="max-w-6xl mx-auto">
       <div className="portfolio-glass rounded-3xl p-12 backdrop-blur-xl">
         <div className="text-center mb-12">
-          <h1 className="portfolio-name mb-4">Personal & Contact</h1>
+          <h1 className="portfolio-name mb-6" style={{ color: 'black' }}>YASH PANDEY</h1>
           <p className="portfolio-text text-muted-foreground max-w-3xl mx-auto">
             Get in touch for collaboration opportunities in AI/ML, programming, and web development projects.
           </p>
         </div>
 
+        {/* Education Section */}
+        <div className="mb-12 text-center">
+          <h2 className="portfolio-subheading mb-6 text-accent">Educational Background</h2>
+          <div className="portfolio-card rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="portfolio-text font-bold mb-3 text-primary">Bachelor in Technology (Artificial Intelligence)</h3>
+            <p className="portfolio-text text-muted-foreground mb-2">Sacred Heart Academy (CBSE), Nagpur</p>
+            <p className="text-sm text-muted-foreground mb-3">November 2022 — Present</p>
+            <p className="portfolio-text">Currently in 3rd year, expected graduation in 2026</p>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <h2 className="text-2xl font-bold mb-6 text-accent">Contact Information</h2>
+            <h2 className="portfolio-subheading mb-6 text-accent">Contact Information</h2>
             <div className="space-y-4 mb-8">
               {contactInfo.map((info, index) => (
                 <div
@@ -68,7 +79,7 @@ const PersonalSection = () => {
 
             {/* Availability */}
             <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <h3 className="portfolio-subheading mb-4 flex items-center gap-2">
                 <Briefcase className="h-5 w-5 text-secondary" />
                 Available for Jobs In
               </h3>
@@ -87,11 +98,11 @@ const PersonalSection = () => {
 
           {/* Personal Details */}
           <div>
-            <h2 className="text-2xl font-bold mb-6 text-accent">Personal Details</h2>
+            <h2 className="portfolio-subheading mb-6 text-accent">Personal Details</h2>
             
             {/* Languages */}
             <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <h3 className="portfolio-subheading mb-4 flex items-center gap-2">
                 <Languages className="h-5 w-5 text-primary" />
                 Languages
               </h3>
@@ -109,7 +120,7 @@ const PersonalSection = () => {
 
             {/* Hobbies */}
             <div>
-              <h3 className="text-xl font-bold mb-4">Hobbies & Interests</h3>
+              <h3 className="portfolio-subheading mb-4">Hobbies & Interests</h3>
               <div className="grid grid-cols-1 gap-3">
                 {hobbies.map((hobby, index) => (
                   <div key={index} className="portfolio-card rounded-xl p-4">

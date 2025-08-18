@@ -120,16 +120,21 @@
 
 @layer components {
   .portfolio-name {
-    color: hsl(var(--portfolio-name));
-    font-weight: 800;
-    font-size: 3.5rem;
-    text-shadow: 2px 2px 4px hsl(0 0% 100% / 0.3);
+    @apply text-5xl font-luxury font-bold;
+    color: black !important;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.3);
   }
 
   .portfolio-text {
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.6;
+    @apply text-lg font-elegant font-medium text-foreground;
+  }
+  
+  .portfolio-heading {
+    @apply text-3xl font-luxury font-bold text-foreground;
+  }
+  
+  .portfolio-subheading {
+    @apply text-xl font-elegant font-semibold text-foreground;
   }
 
   .portfolio-glass {
