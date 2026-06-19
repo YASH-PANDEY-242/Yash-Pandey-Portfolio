@@ -1,148 +1,106 @@
 import { useState } from "react";
-import { X, Send, Bot, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Bot, MessageCircle, Send, User, X } from "lucide-react";
 
-interface ChatbotProps {
-  onClose: () => void;
-}
+interface Msg { id: number; text: string; from: "bot" | "user"; }
 
-interface Message {
-  id: number;
-  text: string;
-  sender: 'user' | 'bot';
-  timestamp: Date;
-}
+const faq = (q: string): string => {
+  const s = q.toLowerCase();
+  if (/(hi|hello|hey)/.test(s)) return "Hello! How can I help you learn about Yash today?";
+  if (/skill|tech|programming|language/.test(s))
+    return "Yash works with C (80%), C++ (70%), Python (75%), SQL (80%), AI/ML (70%), HTML (75%), CSS (70%), and JavaScript (65%).";
+  if (/project/.test(s))
+    return "Featured projects: Image Forgery Detection, Image Enhancement using Deep Learning, Simple Calculator, Aadhaar Card Management using AI, AI Jewellery Management, and Invoice Management System.";
+  if (/experience|intern|work|job history/.test(s))
+    return "Yash was an AI Intern at Rakibe Dynamics Pvt. Ltd. (6 months) and an AI Engineer at StacTech (1 month).";
+  if (/education|study|college|school/.test(s))
+    return "He is pursuing B.Tech in Artificial Intelligence at Sacred Heart Academy (CBSE), graduating in 2026.";
+  if (/contact|email|reach|hire/.test(s))
+    return "Reach out at py5554443@gmail.com — or use the contact form on the page.";
+  if (/availab|open|free|freelance|role/.test(s))
+    return "Open for AI/ML roles, ML projects, C programming, web development, and freelance AI solutions.";
+  if (/resume|cv|download/.test(s))
+    return "Scroll to the Resume section and click Download CV.";
+  return "I can answer about skills, projects, experience, education, contact and availability. What would you like to know?";
+};
 
-const Chatbot = ({ onClose }: ChatbotProps) => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      text: "Hello! I'm Yash's portfolio assistant. Ask me anything about his skills, projects, or experience!",
-      sender: 'bot',
-      timestamp: new Date(),
-    },
+const Chatbot = () => {
+  const [open, setOpen] = useState(false);
+  const [input, setInput] = useState("");
+  const [msgs, setMsgs] = useState<Msg[]>([
+    { id: 1, from: "bot", text: "Hi! I'm Yash's Portfolio Assistant. How can I help you today?" },
   ]);
-  const [inputMessage, setInputMessage] = useState("");
 
-  const botResponses: Record<string, string> = {
-    skills: "Yash is proficient in C (80%), C++ (70%), Python (75%), AI/ML (70%), and SQL (80%). He's currently studying Artificial Intelligence at Sacred Heart Academy.",
-    projects: "His featured projects include Image Forgery Detection using ML algorithms, a Simple Calculator with clean UI, and Image Enhancement using Deep Learning with CNNs.",
-    education: "He's pursuing a Bachelor in Technology in Artificial Intelligence from Sacred Heart Academy (CBSE), Nagpur. Currently in his 3rd year, graduating in 2026.",
-    contact: "You can reach Yash at py5554443@gmail.com or call him at +91 8623009578. He's based in Nagpur, India.",
-    availability: "Yash is available for jobs in AI/ML Development, C Programming, and Web Development.",
-    experience: "Yash has worked on various AI/ML projects including image processing, forgery detection, and deep learning applications. He has strong foundations in programming and data science.",
-    languages: "Yash speaks English fluently and is a native speaker of Hindi and Marathi.",
-    hobbies: "In his free time, Yash enjoys chromancy (color magic), video editing, and gaming.",
-  };
-
-  const getResponse = (message: string): string => {
-    const lowerMessage = message.toLowerCase();
-    
-    if (lowerMessage.includes('skill') || lowerMessage.includes('programming')) return botResponses.skills;
-    if (lowerMessage.includes('project')) return botResponses.projects;
-    if (lowerMessage.includes('education') || lowerMessage.includes('study')) return botResponses.education;
-    if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('phone')) return botResponses.contact;
-    if (lowerMessage.includes('job') || lowerMessage.includes('work') || lowerMessage.includes('hire')) return botResponses.availability;
-    if (lowerMessage.includes('experience') || lowerMessage.includes('background')) return botResponses.experience;
-    if (lowerMessage.includes('language')) return botResponses.languages;
-    if (lowerMessage.includes('hobby') || lowerMessage.includes('interest')) return botResponses.hobbies;
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) return "Hello! How can I help you learn more about Yash Pandey?";
-    
-    return "I can help you learn about Yash's skills, projects, education, contact information, and availability. What would you like to know?";
-  };
-
-  const sendMessage = () => {
-    if (!inputMessage.trim()) return;
-
-    const userMessage: Message = {
-      id: messages.length + 1,
-      text: inputMessage,
-      sender: 'user',
-      timestamp: new Date(),
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-
-    // Simulate bot response delay
-    setTimeout(() => {
-      const botMessage: Message = {
-        id: messages.length + 2,
-        text: getResponse(inputMessage),
-        sender: 'bot',
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, botMessage]);
-    }, 1000);
-
-    setInputMessage("");
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
+  const send = () => {
+    if (!input.trim()) return;
+    const userMsg: Msg = { id: Date.now(), from: "user", text: input };
+    const botMsg: Msg = { id: Date.now() + 1, from: "bot", text: faq(input) };
+    setMsgs((m) => [...m, userMsg]);
+    setInput("");
+    setTimeout(() => setMsgs((m) => [...m, botMsg]), 500);
   };
 
   return (
-    <div className="fixed bottom-24 right-8 w-96 h-96 portfolio-glass rounded-2xl z-30 flex flex-col">
-      {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-border">
-        <div className="flex items-center gap-2">
-          <Bot className="h-5 w-5 text-primary" />
-          <span className="font-semibold">Portfolio Assistant</span>
-        </div>
-        <Button variant="ghost" size="sm" onClick={onClose}>
-          <X className="h-4 w-4" />
-        </Button>
-      </div>
-
-      {/* Messages */}
-      <div className="flex-1 p-4 overflow-y-auto space-y-3">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`flex gap-2 ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-          >
-            {message.sender === 'bot' && (
-              <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <Bot className="h-3 w-3 text-primary" />
+    <>
+      {open && (
+        <div className="fixed bottom-24 right-4 md:right-8 w-[90vw] max-w-sm h-[28rem] glass rounded-2xl z-50 flex flex-col animate-in fade-in slide-in-from-bottom-4">
+          <div className="flex items-center justify-between p-4 border-b border-border">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full gradient-btn flex items-center justify-center">
+                <Bot className="h-4 w-4 text-white" />
               </div>
-            )}
-            <div
-              className={`max-w-[80%] p-3 rounded-lg text-sm ${
-                message.sender === 'user'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-muted'
-              }`}
-            >
-              {message.text}
+              <span className="font-bold">Portfolio Assistant</span>
             </div>
-            {message.sender === 'user' && (
-              <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                <User className="h-3 w-3 text-secondary" />
-              </div>
-            )}
+            <button onClick={() => setOpen(false)} className="p-1 rounded hover:bg-muted">
+              <X className="h-4 w-4" />
+            </button>
           </div>
-        ))}
-      </div>
-
-      {/* Input */}
-      <div className="p-4 border-t border-border">
-        <div className="flex gap-2">
-          <input
-            type="text"
-            placeholder="Ask me about Yash..."
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            onKeyPress={handleKeyPress}
-            className="flex-1 px-3 py-2 bg-muted rounded-lg text-sm border-none outline-none focus:ring-2 focus:ring-primary/50"
-          />
-          <Button size="sm" onClick={sendMessage}>
-            <Send className="h-4 w-4" />
-          </Button>
+          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+            {msgs.map((m) => (
+              <div key={m.id} className={`flex gap-2 ${m.from === "user" ? "justify-end" : "justify-start"}`}>
+                {m.from === "bot" && (
+                  <div className="w-7 h-7 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
+                    <Bot className="h-4 w-4 text-primary" />
+                  </div>
+                )}
+                <div
+                  className={`max-w-[80%] p-3 rounded-2xl text-sm ${
+                    m.from === "user"
+                      ? "gradient-btn text-white rounded-br-sm"
+                      : "bg-white/80 text-foreground rounded-bl-sm"
+                  }`}
+                >
+                  {m.text}
+                </div>
+                {m.from === "user" && (
+                  <div className="w-7 h-7 rounded-full bg-teal-500/20 flex items-center justify-center shrink-0">
+                    <User className="h-4 w-4" style={{ color: "hsl(var(--teal))" }} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="p-3 border-t border-border flex gap-2">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && send()}
+              placeholder="Ask me anything..."
+              className="flex-1 px-3 py-2 rounded-lg bg-white/80 border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            <button onClick={send} className="gradient-btn px-3 rounded-lg">
+              <Send className="h-4 w-4" />
+            </button>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+      <button
+        onClick={() => setOpen(!open)}
+        className="fixed bottom-6 right-4 md:right-8 z-50 gradient-btn px-5 py-3 rounded-full font-bold inline-flex items-center gap-2 shadow-2xl"
+      >
+        <MessageCircle className="h-5 w-5" />
+        {open ? "Close" : "Chat"}
+      </button>
+    </>
   );
 };
 

@@ -1,46 +1,83 @@
-import { Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { Menu, X, Instagram, Linkedin, Github } from "lucide-react";
 
-interface NavigationProps {
-  socialLinks: Array<{
-    icon: React.ComponentType<any>;
-    href: string;
-    label: string;
-  }>;
-  onDownloadCV: () => void;
-}
+const links = [
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#resume", label: "Resume" },
+  { href: "#contact", label: "Contact" },
+];
 
-const Navigation = ({ socialLinks, onDownloadCV }: NavigationProps) => {
+const Navigation = () => {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-30 p-6">
-      <div className="flex justify-between items-center">
-        {/* Logo/Name */}
-        <div className="portfolio-name text-white bg-white/10 backdrop-blur px-6 py-2 rounded-xl">
-          YASH PANDEY
-        </div>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "glass py-2" : "py-4"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <a href="#home" className="text-xl md:text-2xl font-extrabold gradient-text">
+          Yash Pandey
+        </a>
 
-        {/* Social Links & CV Download */}
-        <div className="flex items-center gap-4">
-          {socialLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              className="nav-link portfolio-text text-foreground hover:text-accent p-3 portfolio-glass rounded-lg"
-              aria-label={link.label}
-            >
-              <link.icon className="h-5 w-5" />
+        <div className="hidden lg:flex items-center gap-1">
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className="nav-link text-base">
+              {l.label}
             </a>
           ))}
-          
-          <Button
-            onClick={onDownloadCV}
-            className="portfolio-glass hover:bg-primary/20 portfolio-text"
-          >
-            <Download className="h-4 w-4 mr-2" />
-            Download CV
-          </Button>
         </div>
+
+        <div className="hidden md:flex items-center gap-2">
+          {[
+            { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+            { Icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+            { Icon: Github, href: "https://github.com", label: "GitHub" },
+          ].map(({ Icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={label}
+              className="p-2 rounded-full glass hover:scale-110 hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)] transition-all"
+            >
+              <Icon className="h-5 w-5 text-primary" />
+            </a>
+          ))}
+        </div>
+
+        <button
+          className="lg:hidden p-2 rounded-lg glass"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      {open && (
+        <div className="lg:hidden glass mt-2 mx-4 rounded-2xl p-4 flex flex-col gap-2">
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className="nav-link" onClick={() => setOpen(false)}>
+              {l.label}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
