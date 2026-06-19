@@ -6,7 +6,6 @@ import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
 import Achievements from "@/components/sections/Achievements";
 import Resume from "@/components/sections/Resume";
-import Personal from "@/components/sections/Personal";
 import Contact from "@/components/sections/Contact";
 import Chatbot from "@/components/Chatbot";
 import { useEffect } from "react";
@@ -36,7 +35,6 @@ const Portfolio = () => {
         <Projects />
         <Achievements />
         <Resume />
-        <Personal />
         <Contact />
       </main>
       <footer className="text-center py-8 text-foreground/70 font-semibold">

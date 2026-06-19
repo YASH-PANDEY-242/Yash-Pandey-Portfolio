@@ -152,4 +152,85 @@
     50% { transform: translateY(-14px); }
   }
   .float { animation: floatY 6s ease-in-out infinite; }
+
+  /* Hero name - premium gradient + letter reveal */
+  .hero-name {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    font-size: clamp(3rem, 9vw, 6rem);
+    font-weight: 800;
+    letter-spacing: 4px;
+    line-height: 1.05;
+    background: linear-gradient(90deg, #111827, #2563EB);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    filter: drop-shadow(0 6px 24px rgba(37,99,235,0.15));
+  }
+  .hero-letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(28px);
+    animation: letterReveal 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  @keyframes letterReveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes floatSlow {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .float-slow { animation: floatSlow 7s ease-in-out infinite; animation-delay: 2s; }
+
+  /* Modern rectangular buttons */
+  .btn-modern {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    padding: 0 40px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    transition: var(--transition-smooth);
+  }
+  .btn-primary-modern {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--teal)));
+    color: white;
+    box-shadow: 0 8px 20px -8px hsla(221,83%,53%,0.5);
+  }
+  .btn-primary-modern:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -10px hsla(221,83%,53%,0.55);
+    filter: brightness(1.06);
+  }
+  .btn-glass-modern {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(37,99,235,0.25);
+    color: hsl(var(--primary));
+  }
+  .btn-glass-modern:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -10px rgba(37,99,235,0.3);
+    background: rgba(255,255,255,0.9);
+  }
+
+  /* Navbar underline animation */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 12px; right: 12px; bottom: 4px;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--teal)));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .nav-link:hover::after { transform: scaleX(1); }
 }
+
