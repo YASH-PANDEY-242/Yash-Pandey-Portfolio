@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const phrases = [
-  "Artificial Intelligence & Machine Learning Engineer",
-  "Computer Vision Specialist",
-  "Deep Learning Enthusiast",
-  "Automation & Intelligent Systems Developer",
+  "Artificial Intelligence Engineer",
+  "Machine Learning Engineer",
+  "AI Research Enthusiast",
 ];
 
 const Hero = () => {
@@ -38,18 +37,12 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-24 pb-16 relative">
       <div className="max-w-5xl w-full text-center">
         <div className="reveal visible">
-          <p className="text-white/90 text-lg md:text-xl font-semibold mb-4 tracking-wider uppercase">
-            Welcome to my portfolio
-          </p>
-          <h1
-            className="portfolio-name mb-6 inline-block px-8 py-4 rounded-3xl bg-white/85 backdrop-blur-md shadow-2xl"
-            style={{ fontSize: "60px" }}
-          >
+          <h1 className="portfolio-name mb-6" style={{ fontSize: "60px" }}>
             YASH PANDEY
           </h1>
           <div className="glass-card p-6 md:p-8 mt-6 max-w-3xl mx-auto">
             <p className="portfolio-text gradient-text typing-caret min-h-[2em]">{text}</p>
-            <p className="portfolio-text text-foreground/80 mt-4">
+            <p className="portfolio-text text-foreground/70 mt-4">
               Passionate AI Engineer specializing in Machine Learning, Computer Vision,
               Deep Learning, Automation and Intelligent Systems Development.
             </p>
@@ -66,7 +59,7 @@ const Hero = () => {
       </div>
       <a
         href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white float"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary float"
         aria-label="Scroll"
       >
         <ChevronDown className="h-8 w-8" />
