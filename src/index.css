@@ -59,31 +59,26 @@
   html { scroll-behavior: smooth; }
   body {
     @apply text-foreground;
-    font-family: 'Poppins', 'Inter', sans-serif;
-    background-image: url('/lovable-uploads/987bbc59-1141-407a-ad45-23f387cc8a8a.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #ffffff, #f8fafc);
+    min-height: 100vh;
+    color: #111827;
   }
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background: var(--portfolio-gradient);
-    z-index: -1;
-  }
+  body::before { content: none; }
 }
+
 
 @layer components {
   .portfolio-name {
-    color: #000;
-    font-weight: 900;
+    color: #111827;
+    font-weight: 800;
     font-size: 60px;
     letter-spacing: -0.02em;
     line-height: 1;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
-  .portfolio-text { font-size: 20px; font-weight: 600; line-height: 1.6; }
+  .portfolio-text { font-size: 20px; font-weight: 500; line-height: 1.6; }
+
   .glass {
     background: hsl(var(--glass-bg));
     backdrop-filter: blur(20px) saturate(180%);

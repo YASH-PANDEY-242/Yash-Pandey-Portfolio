@@ -29,9 +29,8 @@ const Navigation = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="#home" className="text-xl md:text-2xl font-extrabold gradient-text">
-          Yash Pandey
-        </a>
+        <div />
+
 
         <div className="hidden lg:flex items-center gap-1">
           {links.map((l) => (

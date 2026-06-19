@@ -39,7 +39,7 @@ const Portfolio = () => {
         <Personal />
         <Contact />
       </main>
-      <footer className="text-center py-8 text-white/90 font-semibold">
+      <footer className="text-center py-8 text-foreground/70 font-semibold">
         © {new Date().getFullYear()} Yash Pandey • Built with passion for AI
       </footer>
       <Chatbot />
