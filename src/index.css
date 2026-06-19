@@ -59,20 +59,14 @@
   html { scroll-behavior: smooth; }
   body {
     @apply text-foreground;
-    font-family: 'Poppins', 'Inter', sans-serif;
-    background-image: url('/lovable-uploads/987bbc59-1141-407a-ad45-23f387cc8a8a.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    font-family: 'Inter', 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #ffffff, #f8fafc);
+    min-height: 100vh;
+    color: #111827;
   }
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background: var(--portfolio-gradient);
-    z-index: -1;
-  }
+  body::before { content: none; }
 }
+
 
 @layer components {
   .portfolio-name {
