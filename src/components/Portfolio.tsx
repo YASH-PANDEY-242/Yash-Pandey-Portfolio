@@ -35,7 +35,6 @@ const Portfolio = () => {
         <Projects />
         <Achievements />
         <Resume />
-        <Personal />
         <Contact />
       </main>
       <footer className="text-center py-8 text-foreground/70 font-semibold">
