@@ -35,6 +35,12 @@ const Contact = () => {
             >
               py5554443@gmail.com
             </a>
+            <p className="font-bold mb-2 text-foreground">Available for:</p>
+            <ul className="space-y-1 mb-6 text-foreground/80">
+              {["AI/ML Roles", "Software Engineering Roles", "AI Projects", "Freelance Projects"].map((a) => (
+                <li key={a} className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary" />{a}</li>
+              ))}
+            </ul>
             <p className="text-foreground/75 mb-4">Follow me on social media:</p>
             <div className="flex gap-3">
               {[

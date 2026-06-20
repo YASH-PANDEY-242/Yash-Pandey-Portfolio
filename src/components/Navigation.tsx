@@ -24,12 +24,18 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass py-2" : "py-4"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
+        scrolled ? "shadow-[0_2px_10px_rgba(0,0,0,0.05)] py-2" : "py-3"
       }`}
+      style={{ minHeight: 80 }}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div />
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-[64px]">
+        <a href="#home" className="flex items-center gap-2">
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center font-extrabold text-white" style={{ background: "linear-gradient(135deg,#2563EB,#06B6D4)" }}>YP</div>
+          <span className="font-extrabold text-lg text-foreground">Yash Pandey</span>
+        </a>
+
+
 
 
         <div className="hidden lg:flex items-center gap-1">
