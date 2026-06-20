@@ -52,16 +52,16 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center px-6 pt-28 pb-16">
-      <div className="max-w-6xl w-full text-center">
-        <h1 className="hero-name float-slow" aria-label={NAME}>
+      <div className="max-w-6xl w-full text-center" style={{ position: 'relative', zIndex: 10 }}>
+        <h1 className="hero-name" aria-label={NAME}>
           {NAME.split("").map((ch, i) => (
-            <span key={i} className="hero-letter" style={{ animationDelay: `${i * 0.07}s` }}>
+            <span key={i} className="hero-letter" style={{ animationDelay: `${i * 0.08}s` }}>
               {ch === " " ? "\u00A0" : ch}
             </span>
           ))}
         </h1>
 
-        <p className="mt-6 text-2xl md:text-3xl font-bold typing-caret min-h-[1.6em]" style={{ color: "#2563EB" }}>
+        <p className="mt-6 text-2xl md:text-3xl font-bold typing-caret min-h-[1.6em]" style={{ color: "#2563EB", position: 'relative', zIndex: 10 }}>
           {text}
         </p>
 
