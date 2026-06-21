@@ -156,9 +156,9 @@
   /* Hero name - premium gradient + letter reveal */
   .hero-name {
     font-family: 'Inter', 'Poppins', sans-serif;
-    font-size: clamp(80px, 10vw, 140px);
+    font-size: clamp(64px, 8vw, 110px);
     font-weight: 900;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     line-height: 1;
     background: linear-gradient(90deg, rgb(15,23,42), rgb(37,99,235));
     -webkit-background-clip: text;
