@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Brain, Eye, Cpu, Code2, User, GraduationCap, Trophy, FolderOpen, Briefcase } from "lucide-react";
+import { ArrowRight, Brain, Eye, Cpu, Layers, MessageCircle, MapPin, Trophy, GraduationCap, FolderOpen, Briefcase } from "lucide-react";
 
 const phrases = [
   "Artificial Intelligence Engineer",
@@ -37,10 +37,10 @@ const Hero = () => {
   }, [cIdx, deleting, pIdx]);
 
   const features = [
-    { Icon: Brain, label: "Machine Learning Engineer", color: "#2563EB" },
-    { Icon: Eye, label: "Computer Vision Enthusiast", color: "#3B82F6" },
-    { Icon: Cpu, label: "AI Research Enthusiast", color: "#9333EA" },
-    { Icon: Code2, label: "Problem Solver", color: "#F97316" },
+    { Icon: Brain, label: "Artificial Intelligence", color: "#2563EB" },
+    { Icon: Cpu, label: "Machine Learning", color: "#3B82F6" },
+    { Icon: Eye, label: "Computer Vision", color: "#9333EA" },
+    { Icon: Layers, label: "Deep Learning", color: "#F97316" },
   ];
 
   const stats = [
@@ -57,13 +57,22 @@ const Hero = () => {
           {NAME}
         </h1>
 
-        <p className="mt-6 text-2xl md:text-3xl font-bold typing-caret min-h-[1.6em]" style={{ color: "#2563EB", position: 'relative', zIndex: 10 }}>
+        <p className="mt-5 text-2xl md:text-3xl font-bold typing-caret min-h-[1.6em]" style={{ color: "#2563EB", position: 'relative', zIndex: 10 }}>
           {text}
         </p>
 
-        <p className="mt-4 max-w-3xl mx-auto portfolio-text" style={{ color: "#475569" }}>
-          Passionate AI Engineer specializing in Machine Learning, Computer Vision, Deep Learning, Automation and Intelligent Systems Development.
+        <p className="mt-3 max-w-3xl mx-auto text-lg font-semibold" style={{ color: "#475569" }}>
+          Building intelligent systems through Artificial Intelligence, Machine Learning, and Computer Vision.
         </p>
+
+        <div className="mt-5 flex flex-wrap justify-center items-center gap-3">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white font-semibold text-sm shadow-[0_4px_15px_rgba(0,0,0,0.06)]" style={{ color: "#0F172A", border: "1px solid rgba(37,99,235,0.2)" }}>
+            <Trophy className="h-4 w-4" style={{ color: "#F59E0B" }} /> Qualified GATE 2026 (CS-IT) · Score: 320
+          </span>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white font-semibold text-sm shadow-[0_4px_15px_rgba(0,0,0,0.06)]" style={{ color: "#0F172A", border: "1px solid rgba(37,99,235,0.2)" }}>
+            <MapPin className="h-4 w-4" style={{ color: "#2563EB" }} /> Nagpur, Maharashtra, India
+          </span>
+        </div>
 
         <div className="mt-8 mx-auto max-w-5xl bg-white rounded-2xl px-6 py-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] grid grid-cols-2 md:grid-cols-4 gap-4">
           {features.map((f) => (
@@ -79,7 +88,7 @@ const Hero = () => {
             View Projects <ArrowRight className="h-5 w-5" />
           </a>
           <a href="#contact" className="inline-flex items-center justify-center gap-2 font-bold rounded-xl bg-white hover:-translate-y-1 transition-all" style={{ width: 220, height: 55, color: "#2563EB", border: "2px solid #2563EB" }}>
-            <User className="h-5 w-5" /> Hire Me
+            <MessageCircle className="h-5 w-5" /> Let's Connect
           </a>
         </div>
 
