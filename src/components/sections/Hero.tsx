@@ -47,7 +47,7 @@ const Hero = () => {
     { Icon: GraduationCap, label: "CGPA", value: "8.84", color: "#2563EB" },
     { Icon: Trophy, label: "GATE Score", value: "320", color: "#22C55E" },
     { Icon: FolderOpen, label: "Projects", value: "6+", color: "#9333EA" },
-    { Icon: Briefcase, label: "Experience", value: "7 Months", color: "#F97316" },
+    { Icon: Briefcase, label: "Professional Experience", value: "7+ Months", color: "#F97316" },
   ];
 
   return (
